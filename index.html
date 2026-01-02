@@ -21,43 +21,41 @@ body {
   border: 1px solid #00ffcc;
   padding: 28px;
   max-width: 720px;
-  box-shadow: 0 0 25px rgba(0,255,204,0.25);
+  width: 90%;
+  text-align: left;
+  box-shadow: 0 0 18px rgba(0,255,204,0.35);
 }
 
 h1 {
-  margin-top: 0;
-  font-size: 1.4rem;
-  letter-spacing: 2px;
+  margin: 0 0 10px;
+  text-align: center;
+  letter-spacing: 3px;
 }
 
 .status {
+  text-align: center;
   color: #ffcc00;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
-ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-li::before {
-  content: ">";
-  margin-right: 8px;
+.line {
+  margin: 8px 0;
 }
 
 button {
-  margin-top: 20px;
+  margin-top: 22px;
+  width: 100%;
+  padding: 14px;
   background: transparent;
   border: 1px solid #00ffcc;
   color: #00ffcc;
-  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
-  font-family: inherit;
-  letter-spacing: 1px;
 }
 
 button:hover {
-  background: rgba(0,255,204,0.1);
+  background: #00ffcc;
+  color: #000;
 }
 </style>
 </head>
@@ -65,15 +63,12 @@ button:hover {
 <body>
 <div class="container">
   <h1>A31 TEMPLATE NODE</h1>
-
   <div class="status">STATUS : UNDER CONSTRUCTION</div>
 
-  <ul>
-    <li>Puramo Garage Data Node に接続しました</li>
-    <li>現在 A31 セフィーロは制作進行中です</li>
-    <li>シャーシ構造・LED構想・給電方式を検証中</li>
-    <li>テンプレートデータは順次展開予定です</li>
-  </ul>
+  <div class="line">&gt; Puramo Garage Data Node に接続しました</div>
+  <div class="line">&gt; 現在 Aさんいち セフィーロは制作進行中です</div>
+  <div class="line">&gt; シャーシ構造・LED構成・給電方式を検証中</div>
+  <div class="line">&gt; テンプレートデータは順次展開予定です</div>
 
   <button onclick="playVoice()">AI管理人 音声案内</button>
 </div>
@@ -81,15 +76,17 @@ button:hover {
 <script>
 function playVoice() {
   if (!('speechSynthesis' in window)) {
-    alert("このブラウザは音声合成に対応していません");
+    alert('このブラウザは音声合成に対応していません');
     return;
   }
 
+  speechSynthesis.cancel();
+
   const text =
-    "こちらはプラモガレージ データノードです。" +
-    "現在、A31セフィーロは制作段階に入っています。" +
-    "シャーシ構造、LED構想、給電方式を検証中です。" +
-    "テンプレートデータは、順次公開予定です。";
+    "こちらはプラモガレージ、データノード。"
+  + "現在、Aさんいち、セフィーロは制作進行中です。"
+  + "シャーシ構造、LED構成、給電方式を検証しています。"
+  + "テンプレートデータは、順次公開予定です。";
 
   const uttr = new SpeechSynthesisUtterance(text);
   uttr.lang = "ja-JP";
@@ -97,7 +94,6 @@ function playVoice() {
   uttr.pitch = 0.9;
   uttr.volume = 1.0;
 
-  speechSynthesis.cancel(); // 連打対策
   speechSynthesis.speak(uttr);
 }
 </script>
