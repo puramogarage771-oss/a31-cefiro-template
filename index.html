@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>A31 TEMPLATE / UNDER CONSTRUCTION</title>
+<title>A31 TEMPLATE NODE</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -18,38 +18,25 @@ body {
 }
 
 .container {
-  border: 1px solid #00ffcc;
-  padding: 28px;
-  max-width: 720px;
-  width: 90%;
-  text-align: left;
-  box-shadow: 0 0 18px rgba(0,255,204,0.35);
+  border: 1px solid #00ffcc55;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 0 20px #00ffcc22;
 }
 
 h1 {
-  margin: 0 0 10px;
-  text-align: center;
-  letter-spacing: 3px;
-}
-
-.status {
-  text-align: center;
-  color: #ffcc00;
-  margin-bottom: 18px;
-}
-
-.line {
-  margin: 8px 0;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  margin-bottom: 32px;
 }
 
 button {
-  margin-top: 22px;
-  width: 100%;
-  padding: 14px;
   background: transparent;
   border: 1px solid #00ffcc;
   color: #00ffcc;
-  font-size: 16px;
+  padding: 12px 28px;
+  font-family: inherit;
+  font-size: 0.9rem;
   cursor: pointer;
 }
 
@@ -63,37 +50,25 @@ button:hover {
 <body>
 <div class="container">
   <h1>A31 TEMPLATE NODE</h1>
-  <div class="status">STATUS : UNDER CONSTRUCTION</div>
 
-  <div class="line">&gt; Puramo Garage Data Node に接続しました</div>
-  <div class="line">&gt; 現在 Aさんいち セフィーロは制作進行中です</div>
-  <div class="line">&gt; シャーシ構造・LED構成・給電方式を検証中</div>
-  <div class="line">&gt; テンプレートデータは順次展開予定です</div>
-
-  <button onclick="playVoice()">AI管理人 音声案内</button>
+  <button onclick="playVoice()">
+    AI管理人 音声案内
+  </button>
 </div>
 
 <script>
 function playVoice() {
-  if (!('speechSynthesis' in window)) {
-    alert('このブラウザは音声合成に対応していません');
-    return;
-  }
-
-  speechSynthesis.cancel();
-
   const text =
-    "こちらはプラモガレージ、データノード。"
-  + "現在、Aさんいち、セフィーロは制作進行中です。"
-  + "シャーシ構造、LED構成、給電方式を検証しています。"
-  + "テンプレートデータは、順次公開予定です。";
+    "こちらは、Aさんいち、テンプレートノードです。" +
+    "現在、制作準備段階にあります。" +
+    "プラモガレージ、データノードよりお知らせしました。";
 
   const uttr = new SpeechSynthesisUtterance(text);
   uttr.lang = "ja-JP";
   uttr.rate = 0.95;
   uttr.pitch = 0.9;
-  uttr.volume = 1.0;
 
+  speechSynthesis.cancel(); // 連打対策
   speechSynthesis.speak(uttr);
 }
 </script>
