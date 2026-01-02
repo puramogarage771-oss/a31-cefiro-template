@@ -1,77 +1,79 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>A31 TEMPLATE NODE</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body {
-  margin: 0;
-  background: #050505;
-  color: #00ffcc;
-  font-family: "Courier New", monospace;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-.container {
-  border: 1px solid #00ffcc55;
-  padding: 32px;
-  text-align: center;
-  box-shadow: 0 0 20px #00ffcc22;
-}
-
-h1 {
-  font-size: 1.4rem;
-  letter-spacing: 2px;
-  margin-bottom: 32px;
-}
-
-button {
-  background: transparent;
-  border: 1px solid #00ffcc;
-  color: #00ffcc;
-  padding: 12px 28px;
-  font-family: inherit;
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #00ffcc;
-  color: #000;
-}
-</style>
+  <meta charset="UTF-8" />
+  <title>A31 TEMPLATE NODE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #00ffcc;
+      font-family: "Courier New", monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .node {
+      border: 1px solid #00ffcc;
+      padding: 30px 20px;
+      max-width: 520px;
+      box-shadow: 0 0 20px rgba(0,255,204,0.25);
+    }
+    h1 {
+      margin: 0 0 16px;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+    }
+    p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    button {
+      background: transparent;
+      color: #00ffcc;
+      border: 1px solid #00ffcc;
+      padding: 10px 22px;
+      font-family: inherit;
+      cursor: pointer;
+      letter-spacing: 1px;
+    }
+    button:hover {
+      background: #00ffcc;
+      color: #000;
+    }
+  </style>
 </head>
-
 <body>
-<div class="container">
-  <h1>A31 TEMPLATE NODE</h1>
 
-  <button onclick="playVoice()">
-    AI管理人 音声案内
-  </button>
-</div>
+  <div class="node">
+    <h1>A31 TEMPLATE NODE</h1>
+    <p>
+      現在 A31 セフィーロは制作に入っている段階です。
+    </p>
+    <button onclick="playVoice()">▶ AI管理人 音声案内</button>
+  </div>
 
-<script>
-function playVoice() {
-  const text =
-    "こちらは、Aさんいち、テンプレートノードです。" +
-    "現在、制作準備段階にあります。" +
-    "プラモガレージ、データノードよりお知らせしました。";
+  <script>
+    function playVoice() {
+      const text =
+        "こちらはプラモガレージ、Aさんいち、テンプレートノードです。" +
+        "現在、Aさんいち、セフィーロは制作に入っている段階です。" +
+        "公開まで、しばらくお待ちください。";
 
-  const uttr = new SpeechSynthesisUtterance(text);
-  uttr.lang = "ja-JP";
-  uttr.rate = 0.95;
-  uttr.pitch = 0.9;
+      const uttr = new SpeechSynthesisUtterance(text);
+      uttr.lang = "ja-JP";
+      uttr.rate = 0.95;
+      uttr.pitch = 0.9;
 
-  speechSynthesis.cancel(); // 連打対策
-  speechSynthesis.speak(uttr);
-}
-</script>
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(uttr);
+    }
+  </script>
+
 </body>
 </html>
 
