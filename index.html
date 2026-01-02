@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>A31 TEMPLATE / UNDER CONSTRUCTION</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  background: #050505;
+  color: #00ffcc;
+  font-family: "Courier New", monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 720px;
+  padding: 24px;
+  border: 1px solid #00ffcc55;
+  box-shadow: 0 0 25px #00ffcc22;
+}
+
+h1 {
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.status {
+  color: #ffaa00;
+  margin-bottom: 20px;
+}
+
+.log {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  opacity: 0.85;
+}
+
+button {
+  margin-top: 24px;
+  padding: 10px 18px;
+  background: transparent;
+  color: #00ffcc;
+  border: 1px solid #00ffcc;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+button:hover {
+  background: #00ffcc;
+  color: #000;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <h1>A31 TEMPLATE NODE</h1>
+
+  <div class="status">
+    STATUS : UNDER CONSTRUCTION
+  </div>
+
+  <div class="log">
+    &gt; Puramo Garage Data Node に接続しました<br>
+    &gt; 現在 A31 セフィーロは制作進行中です<br>
+    &gt; シャーシ構造・LED構想・給電方式を検証中<br>
+    &gt; テンプレートデータは順次展開予定です
+  </div>
+
+  <button onclick="playVoice()">AI管理人 音声案内</button>
+
+  <audio id="voice" src="voice-a31.mp3"></audio>
+</div>
+
+<script>
+function playVoice() {
+  document.getElementById("voice").play();
+}
+</script>
+</body>
+</html>
 
