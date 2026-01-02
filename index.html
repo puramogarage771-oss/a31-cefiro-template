@@ -18,42 +18,46 @@ body {
 }
 
 .container {
+  border: 1px solid #00ffcc;
+  padding: 28px;
   max-width: 720px;
-  padding: 24px;
-  border: 1px solid #00ffcc55;
-  box-shadow: 0 0 25px #00ffcc22;
+  box-shadow: 0 0 25px rgba(0,255,204,0.25);
 }
 
 h1 {
+  margin-top: 0;
   font-size: 1.4rem;
   letter-spacing: 2px;
-  margin-bottom: 16px;
 }
 
 .status {
-  color: #ffaa00;
-  margin-bottom: 20px;
+  color: #ffcc00;
+  margin-bottom: 16px;
 }
 
-.log {
-  font-size: 0.9rem;
-  line-height: 1.8;
-  opacity: 0.85;
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li::before {
+  content: ">";
+  margin-right: 8px;
 }
 
 button {
-  margin-top: 24px;
-  padding: 10px 18px;
+  margin-top: 20px;
   background: transparent;
-  color: #00ffcc;
   border: 1px solid #00ffcc;
+  color: #00ffcc;
+  padding: 10px 20px;
   cursor: pointer;
   font-family: inherit;
+  letter-spacing: 1px;
 }
 
 button:hover {
-  background: #00ffcc;
-  color: #000;
+  background: rgba(0,255,204,0.1);
 }
 </style>
 </head>
@@ -62,25 +66,39 @@ button:hover {
 <div class="container">
   <h1>A31 TEMPLATE NODE</h1>
 
-  <div class="status">
-    STATUS : UNDER CONSTRUCTION
-  </div>
+  <div class="status">STATUS : UNDER CONSTRUCTION</div>
 
-  <div class="log">
-    &gt; Puramo Garage Data Node に接続しました<br>
-    &gt; 現在 A31 セフィーロは制作進行中です<br>
-    &gt; シャーシ構造・LED構想・給電方式を検証中<br>
-    &gt; テンプレートデータは順次展開予定です
-  </div>
+  <ul>
+    <li>Puramo Garage Data Node に接続しました</li>
+    <li>現在 A31 セフィーロは制作進行中です</li>
+    <li>シャーシ構造・LED構想・給電方式を検証中</li>
+    <li>テンプレートデータは順次展開予定です</li>
+  </ul>
 
   <button onclick="playVoice()">AI管理人 音声案内</button>
-
-  <audio id="voice" src="voice-a31.mp3"></audio>
 </div>
 
 <script>
 function playVoice() {
-  document.getElementById("voice").play();
+  if (!('speechSynthesis' in window)) {
+    alert("このブラウザは音声合成に対応していません");
+    return;
+  }
+
+  const text =
+    "こちらはプラモガレージ データノードです。" +
+    "現在、A31セフィーロは制作段階に入っています。" +
+    "シャーシ構造、LED構想、給電方式を検証中です。" +
+    "テンプレートデータは、順次公開予定です。";
+
+  const uttr = new SpeechSynthesisUtterance(text);
+  uttr.lang = "ja-JP";
+  uttr.rate = 0.95;
+  uttr.pitch = 0.9;
+  uttr.volume = 1.0;
+
+  speechSynthesis.cancel(); // 連打対策
+  speechSynthesis.speak(uttr);
 }
 </script>
 </body>
