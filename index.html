@@ -1,99 +1,56 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>A31 TEMPLATE NODE</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       margin: 0;
       background: #000;
       color: #00ffcc;
       font-family: "Courier New", monospace;
-      overflow-x: hidden;
     }
 
-    /* ===== NODE ===== */
-    #node {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 1s ease;
-    }
-
-    #node-box {
-      border: 1px solid #00ffcc;
-      padding: 30px 40px;
+    .header {
       text-align: center;
-      box-shadow: 0 0 15px #00ffcc;
-    }
-
-    #node h1 {
-      margin: 0 0 20px;
-      font-size: 20px;
-      letter-spacing: 2px;
-    }
-
-    #enterBtn {
-      background: transparent;
-      border: 1px solid #00ffcc;
-      color: #00ffcc;
-      padding: 10px 20px;
+      padding: 24px 0;
       font-size: 14px;
-      cursor: pointer;
+      letter-spacing: 1px;
     }
 
-    #enterBtn:hover {
-      background: #00ffcc;
-      color: #000;
-    }
-
-    /* ===== GALLERY ===== */
-    #gallery {
-      display: none;
-      opacity: 0;
-      padding: 20px;
-      transition: opacity 1.2s ease;
-    }
-
-    .grid {
+    .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .grid img {
+    .gallery img {
       width: 100%;
-      border-radius: 6px;
+      height: auto;
+      border: 1px solid #00ffcc;
+      box-shadow: 0 0 8px rgba(0,255,204,0.4);
       background: #000;
     }
 
-    footer {
+    .footer {
       text-align: center;
-      padding: 30px 0;
       font-size: 12px;
-      opacity: 0.6;
+      padding: 16px 0 30px;
+      opacity: 0.8;
     }
   </style>
 </head>
-
 <body>
 
-<!-- ===== NODE ===== -->
-<div id="node">
-  <div id="node-box">
-    <h1>A31 TEMPLATE NODE</h1>
-    <button id="enterBtn">▶ AI管理人 音声案内</button>
+  <div class="header">
+    © PURAMO GARAGE / A31 PHOTO ARCHIVE
   </div>
-</div>
 
-<!-- ===== GALLERY ===== -->
-<div id="gallery">
-  <div class="grid">
+  <div class="gallery">
     <img src="images/a31_01.jpg" alt="A31 Cefiro">
     <img src="images/a31_02.jpg" alt="A31 Cefiro">
     <img src="images/a31_03.jpg" alt="A31 Cefiro">
@@ -101,29 +58,9 @@
     <img src="images/a31_05.jpg" alt="A31 Cefiro">
   </div>
 
-  <footer>
-    © PURAMO GARAGE / A31 PHOTO ARCHIVE
-  </footer>
-</div>
-
-<script>
-  const btn = document.getElementById("enterBtn");
-  const node = document.getElementById("node");
-  const gallery = document.getElementById("gallery");
-
-  btn.addEventListener("click", () => {
-    node.style.opacity = "0";
-
-    setTimeout(() => {
-      node.style.display = "none";
-      gallery.style.display = "block";
-
-      setTimeout(() => {
-        gallery.style.opacity = "1";
-      }, 50);
-    }, 1000);
-  });
-</script>
+  <div class="footer">
+    A31 TEMPLATE NODE
+  </div>
 
 </body>
 </html>
